@@ -1,0 +1,31 @@
+<style>
+.slider {
+    width: 800px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    background: #e6e6e6;
+    border: 20px solid #FFF;
+    margin-top: 20px;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+</style>
+
+
+<div class="container slider">
+	<div ng-repeat="item in slides track by item.id" class="slide slide-animation nonDraggableImage" ng-swipe-right="nextSlide()" ng-swipe-left="prevSlide()" ng-hide="!isCurrentSlideIndex($index)">
+			<img src="{{baseUrl}}/uploads/sports_image/additional/thumb/{{item.additional_image}}" alt="#" />
+			<h2>{{item.sport_name}}</h2>
+			<span>
+				<div class="text-div">{{item.tag}}</div>
+				<div class="more"><a href="javascript:void(0)">MORE &raquo;</a> </div>
+				<div class="clear"></div>
+			</span> 
+	</div>
+</div>
+
