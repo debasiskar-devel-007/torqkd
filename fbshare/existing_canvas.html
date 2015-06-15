@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Using an existing canvas to draw on</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script type="text/javascript" src="//connect.facebook.net/en_UK/all.js"></script>
+<script>
+
+
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+
+function initialize() {
+  directionsDisplay = new google.maps.DirectionsRenderer();
+  directionsDisplay = new google.maps.DirectionsRenderer({
+
+            preserveViewport: true,
+
+            polylineOptions: {
+
+                strokeColor: "#ff0000"
+
+            }
+
+        });
+  
+  
+  var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+  var mapOptions = {
+    zoom:10,
+    center: chicago
+  };
+  map = new google.maps.Map(document.getElementById('content'), mapOptions);
+  directionsDisplay.setMap(map);
+}
+
+function calcRoute() {
+  var start = new google.maps.LatLng(41.850033, -87.6500523);
+  var end = new google.maps.LatLng(45.850033, -87.6500523);
+  var request = {
+      origin:start,
+      destination:end,
+      travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+</script>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+        button {
+            clear: both;
+            display: block;
+        }
+        #content {
+            background-color: #f00;
+            width:300px;
+			height:300px;
+        }
+    </style>
+</head>
+<body>
+<div id="loading"></div>
+<div id="fb-root"></div>
+<script>
+    FB.init({
+        appId      : '1405003926476825',
+        status     : true,
+        xfbml      : true,
+        version    : 'v2.0'
+    });
+</script>
+<div id="content"></div>
+<input onclick="calcRoute()" type="button" value="vcx">
+<h1>Existing canvas:</h1>
+
+<canvas width="500" height="200"></canvas>
+<script type="text/javascript" src="html2canvas.js"></script>
+<button id="btn">Run html2canvas</button>
+<button id="btn1">Rnvas</button>
+
+<script type="text/javascript">
+   
+	
+	$(function(){
+		$('#btn').click(function(){
+			html2canvas($('#content'), {
+                        useCORS: true,
+						
+                        onrendered: function(canvas) {
+							
+                          var url = canvas.toDataURL();
+                          
+                          $.post('saa.php',{data:url},function(res){
+                          
+						   var obj = {
+    method: "feed",
+    picture: res,
+    name: "My custom bikes!",
+    caption: "I just finished building a new pair of bikes",
+    description: "My configuration: ....."
+};
+
+FB.ui(obj, function(response) {
+    console.log(response);
+});
+
+});
+                        },
+						 width: 300,
+
+			});
+		});
+		
+		$('#btn1').click(function(){
+			var canvas = $('canvas');
+			 var data = canvas.toDataURL("data:image/png");
+			 //alert(data);
+		});
+ });
+
+	
+</script>
+</body>
+</html>
