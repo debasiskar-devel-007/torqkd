@@ -1,0 +1,3251 @@
+/**************************************
+jQuery Open Carousel
+
+Copyright (c) 2013 Justin McCandless (justinmccandless.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+***************************************/
+
+/*
+This is the necessary css for Open Carousel
+Include jquery.openCarousel.js and jquery.openCarousel.css in your projects
+*/
+.ocarousel {
+    display: none;
+}
+    .ocarousel_window {
+        overflow: hidden;
+        white-space: nowrap;
+        /* default size */
+        width: 100%;
+        height: auto;
+		margin:0 auto;
+		position:relative;
+    }
+	
+	.left-arrow{ position:absolute; display:inline-block; left:-50px; top:40%;}
+	.right-arrow{ position:absolute; display:inline-block; right:-50px; top:40%;}
+	 .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:455px;}
+        .ocarousel_window_slides {
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+            width: 50000px;
+            white-space: nowrap;
+        }
+	/* IE6 Hack instead of >* child selector */
+        .ocarousel_window_slides * {
+            float: left;
+            white-space: normal;
+        }
+        .ocarousel_window_slides * * {
+            float: none;
+        }
+        .ocarousel_window_slides_vertical {
+            float: none;
+            white-space: normal;
+            display: block;
+        }
+.ocarousel_indicators {
+    width: 100%;
+}
+.ocarousel_indicators svg {
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+}
+.ocarousel_indicators svg circle {
+    cursor: pointer;
+}
+
+/* Fallback indicators for no SVG support */
+.ocarousel_indicator {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 0 1px;
+    overflow: hidden;
+    cursor: pointer;
+
+    /* IE 8< inline-block fix */
+    *display: inline;
+    zoom: 1;
+}
+.ocarousel_indicator_active {
+    background: url('../images/indicatorsSVGFallback.gif') 0 0;
+}
+.ocarousel_indicator_inactive {
+    background: url('../images/indicatorsSVGFallback.gif') -16px 0;
+}
+
+
+.ocarousel_window_slides li {
+	position:relative;
+	display:inline-block;
+}
+.ocarousel_window_slides li span {
+	display:block;
+	width:92%;
+	height:30px;
+	padding:2px 2%;
+	background: url(../images/1px.png) repeat left top;
+	position:absolute;
+	left:10px;
+	bottom:5px;
+}
+
+.ocarousel_window_slides li span .text-div {
+	width:200px;
+	display:block;
+	float:left;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#e57e0d;
+	line-height:14px;
+	font-weight:bold;
+	letter-spacing:-0.5px;
+}
+.ocarousel_window_slides li span .more {
+	width:74px!important;
+	float:right!important;
+	font-family: 'veneerregular'!important;
+	font-size:24px!important;
+	line-height:35px;
+	color:#e57e0d!important;
+	padding:0;
+	margin:0;
+}
+.ocarousel_window_slides li span .more a {
+	color:#f39221!important;
+	font-weight:normal;
+}
+.ocarousel_window_slides li span .more a:hover {
+	text-decoration:none;
+}
+.ocarousel_window_slides li h2 {
+	width:100px;
+	position:absolute;
+	top:7px;
+	left:12px;
+	font-family: 'veneerregular'!important;
+	font-size:38px;
+	letter-spacing:5px;
+	text-shadow:2px 2px 5px #333;
+	color:#fff;
+	text-transform:uppercase;
+	font-weight:normal;
+}
+
+ @media screen and (max-width:1920px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:550px; max-height:310px;}
+ }
+ 
+
+ @media screen and (max-width:1908px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:551px; max-height:308px;}
+ }
+ 
+ @media screen and (max-width:1895px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:550px; max-height:307px;}
+ }
+ 
+ 
+  @media screen and (max-width:1892px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:549px; max-height:307px;}
+ }
+ 
+   @media screen and (max-width:1888px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:548px; max-height:306px;}
+ }
+ 
+ 
+   @media screen and (max-width:1885px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:547px; max-height:306px;}
+ }
+ 
+  
+   @media screen and (max-width:1881px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:546px; max-height:305px;}
+ }
+ 
+ @media screen and (max-width:1878px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:545px; max-height:304px;}
+ }
+ 
+  @media screen and (max-width:1876px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:544px; max-height:304px;}
+ }
+ 
+ 
+  @media screen and (max-width:1874px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:543px;  max-height:303px;}
+ }
+ 
+  @media screen and (max-width:1872px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:542px; max-height:303px;}
+ }
+ 
+   @media screen and (max-width:1870px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:540px; max-height:303px;}
+ }
+ 
+ 
+   @media screen and (max-width:1859px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:538px; max-height:301px;}
+ }
+ 
+  @media screen and (max-width:1853px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:536px; max-height:299px;}
+ }
+ 
+   @media screen and (max-width:1846px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:534px; max-height:298px;} 
+ }
+ 
+ 
+   @media screen and (max-width:1839px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:532px; max-height:297px;}
+ }
+ 
+ @media screen and (max-width:1832px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:530px;  max-height:296px;} 
+ }
+ 
+ @media screen and (max-width:1825px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:528px; max-height:295px;}
+ }
+ 
+ 
+  @media screen and (max-width:1820px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:526px;  max-height:294px;}
+ }
+ 
+  
+  @media screen and (max-width:1812px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:524px; max-height:293px;}
+ }
+  @media screen and (max-width:1804px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:522px; max-height:292px;}
+ }
+ 
+  @media screen and (max-width:1797px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:520px; max-height:290px;}
+ }
+ 
+   @media screen and (max-width:1793px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:519px; max-height:290px;}
+ }
+ 
+ 
+  @media screen and (max-width:1791px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:518px; max-height:289px;}
+ }
+ 
+ 
+  @media screen and (max-width:1784px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:516px; max-height:288px;}
+ }
+ 
+ 
+ 
+  @media screen and (max-width:1779px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:514px; max-height:287px;}
+ }
+ 
+ 
+ @media screen and (max-width:1773px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:512px; max-height:286px;}
+ }
+ 
+  @media screen and (max-width:1764px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:510px; max-height:285px;}
+ .ocarousel_window_slides li span {
+
+	width:92.2%;}
+ }
+ 
+   @media screen and (max-width:1758px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:508px; max-height:284px;}
+ }
+ 
+ 
+   @media screen and (max-width:1757px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:508px; max-height:284px;}
+ }
+ 
+ 
+   @media screen and (max-width:1752px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:506px; max-height:283px;}
+ }
+ 
+ 
+   @media screen and (max-width:1745px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:504px; max-height:282px;}
+ }
+ 
+   @media screen and (max-width:1738px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:502px; max-height:280px;}
+ }
+ 
+ 
+   @media screen and (max-width:1732px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:500px; max-height:279px;}
+ }
+ 
+ 
+   @media screen and (max-width:1723px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:498px; max-height:278px;}
+ }
+ 
+   @media screen and (max-width:1718px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:496px; max-height:277px;}
+ }
+ 
+  @media screen and (max-width:1712px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:494px; max-height:276px;}
+ }
+ 
+  @media screen and (max-width:1705px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:492px; max-height:275px;}
+ }
+
+
+@media screen and (max-width:1699px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:490px; max-height:274px;}
+ }
+ 
+ @media screen and (max-width:1693px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:488px; max-height:273px;}
+ }
+ 
+  @media screen and (max-width:1684px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:486px; max-height:271px;}
+ }
+ 
+   @media screen and (max-width:1678px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:484px; max-height:270px;}
+ }
+ 
+   @media screen and (max-width:1673px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:482px; max-height:269px;}
+ }
+ 
+ @media screen and (max-width:1664px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:480px; max-height:268px;}
+ }
+ 
+  @media screen and (max-width:1659px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:478px; max-height:267px;}
+ }
+ 
+ 
+  @media screen and (max-width:1653px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:476px; max-height:266px;}
+ }
+ 
+  @media screen and (max-width:1644px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:474px; max-height:265px;}
+ }
+ 
+   @media screen and (max-width:1638px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:472px;  max-height:264px;}
+ }
+ 
+  @media screen and (max-width:1632px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:470px;  max-height:263px;}
+ }
+ 
+ 
+  @media screen and (max-width:1623px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:468px;  max-height:261px;}
+ 
+  .ocarousel_window_slides li span {
+
+	width:92%;}
+ }
+ 
+ @media screen and (max-width:1618px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:466px;  max-height:260px;}
+ 
+  .ocarousel_window_slides li span {
+
+	width:91.5%;}
+ }
+ 
+  @media screen and (max-width:1611px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:464px;  max-height:259px;}
+
+ }
+ 
+ 
+ @media screen and (max-width:1604px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:460px;  max-height:255px;}
+.right-arrow{ position:absolute; display:inline-block; right:-53px; top:40%;}
+ }
+ 
+ 
+  @media screen and (max-width:1600px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:456px;  max-height:255px;}
+
+ }
+ 
+ @media screen and (max-width:1598px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:460px;  max-height:257px;}
+ 
+ 
+ }
+ 
+ @media screen and (max-width:1592px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:458px;  max-height:256px;}
+ 
+ }
+ 
+  @media screen and (max-width:1586px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:456px;  max-height:255px;}
+ 
+ }
+ 
+  @media screen and (max-width:1580px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:454px;  max-height:254px;}
+ 
+ }
+ 
+  @media screen and (max-width:1572px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:448px;  max-height:252px;}
+ 
+ }
+ 
+  @media screen and (max-width:1564px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:450px;  max-height:251px;}
+ 
+ }
+ 
+   @media screen and (max-width:1558px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:448px;  max-height:250px;}
+ 
+ }
+ 
+ 
+   @media screen and (max-width:1558px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:448px; max-height:250px;}
+ 
+ }
+ 
+   @media screen and (max-width:1554px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:445px; max-height:249px;}
+ 
+ }
+ 
+    @media screen and (max-width:1550px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:444px; max-height:248px;}
+ 
+ }
+ 
+  @media screen and (max-width:1540px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:442px; max-height:247px;}
+ 
+ }
+ 
+  @media screen and (max-width:1532px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:440px; max-height:246px;}
+ 
+ }
+ 
+   @media screen and (max-width:1524px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:438px; max-height:245px;}
+ 
+ }
+ 
+ @media screen and (max-width:1517px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:436px; max-height:244px;}
+ 
+ }
+ 
+  @media screen and (max-width:1512px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:434px; max-height:242px;}
+ }
+ 
+  @media screen and (max-width:1504px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:432px; max-height:241px;}
+ }
+ 
+ 
+ @media screen and (max-width:1498px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:430px; max-height:240px;}
+ }
+ 
+ 
+ @media screen and (max-width:1492px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:428px; max-height:239px;}
+ }
+ 
+ 
+  @media screen and (max-width:1485px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:426px; max-height:238px;}
+ }
+ 
+   @media screen and (max-width:1478px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:424px; max-height:237px;}
+ }
+ 
+  @media screen and (max-width:1472px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 5px; width:422px; max-height:236px;}
+ }
+ 
+  @media screen and (max-width:1464px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:410px; max-height:229px;}
+  .ocarousel_window_slides li span {width:89%; left:16px;}
+  .ocarousel_window_slides li h2{ left:20px;}
+ }
+ 
+ @media screen and (max-width:1454px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:408px; max-height:228px;}
+
+ }
+ 
+  @media screen and (max-width:1444px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:400px; max-height:223px;}
+ .ocarousel_window_slides li span {width:88.8%; left:16px;}
+     .left-arrow{ left:-40px;}
+	 .right-arrow{ position:absolute; display:inline-block; right:-49px; top:40%;}
+ }
+ 
+ @media screen and (max-width:1434px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:400px; max-height:226px;}
+
+ }
+ 
+  @media screen and (max-width:1424px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:400px; max-height:223px;}
+
+ }
+ 
+  @media screen and (max-width:1420px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:398px; max-height:222px;}
+
+ }
+ 
+  @media screen and (max-width:1414px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:396px; max-height:221px;}
+
+ }
+ 
+  @media screen and (max-width:1404px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:392px; max-height:219px;}
+  
+    .ocarousel_window_slides li span {width:88.5%;}
+
+ }
+ 
+  @media screen and (max-width:1393px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:390px; max-height:218px;}
+
+ }
+ 
+ 
+  @media screen and (max-width:1384px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:388px; max-height:217px;}
+
+ }
+ 
+ 
+   @media screen and (max-width:1380px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:386px; max-height:216px;}
+
+ }
+ 
+  @media screen and (max-width:1374px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:378px; max-height:211px;}
+  
+      .left-arrow{ left:-45px;}
+ .right-arrow{ position:absolute; display:inline-block; right:-54px; top:40%;}
+ }
+ 
+ 
+ @media screen and (max-width:1365px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:376px; max-height:210px;}
+.ocarousel_window_slides li span {width:88%; left:16px;}
+ .left-arrow{ left:-45px;}
+ }
+ 
+ 
+  @media screen and (max-width:1359px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:380px; max-height:212px;}
+
+ }
+ 
+ 
+ @media screen and (max-width:1352px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:378px; max-height:211px;}
+
+ }
+ 
+ 
+  @media screen and (max-width:1346px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:376px; max-height:210px;}
+  .ocarousel_window_slides li span {width:88%;}
+ }
+ 
+ 
+  @media screen and (max-width:1339px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:374px; max-height:209px;}
+ }
+ 
+ 
+ @media screen and (max-width:1333px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:372px; max-height:208px;}
+ }
+ 
+  @media screen and (max-width:1326px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:370px; max-height:207px;}
+ }
+ 
+   @media screen and (max-width:1319px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:368px; max-height:206px;}
+ }
+ 
+  @media screen and (max-width:1313px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:366px; max-height:204px;}
+ }
+ 
+ @media screen and (max-width:1305px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:364px; max-height:203px;}
+ }
+ 
+  @media screen and (max-width:1300px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:362px; max-height:202px;}
+ }
+ 
+  @media screen and (max-width:1293px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:360px; max-height:201px;}
+ }
+ 
+ @media screen and (max-width:1285px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:358px; max-height:200px;}
+ }
+ 
+ @media screen and (max-width:1280px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:352px; max-height:197px;}
+   .left-arrow{ left:-45px;}
+    .ocarousel_window_slides li span {width:87.5%;}
+ }
+ 
+  @media screen and (max-width:1273px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:354px; max-height:198px;}
+ }
+ 
+ @media screen and (max-width:1265px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:352px; max-height:197px;}
+ }
+ 
+ @media screen and (max-width:1260px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:350px; max-height:195px;}
+ }
+ 
+  @media screen and (max-width:1254px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:348px; max-height:194px;}
+ }
+ 
+ 
+  @media screen and (max-width:1245px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:346px; max-height:193px;}
+  
+    .ocarousel_window_slides li span {width:87.5%;}
+ }
+ 
+ 
+   @media screen and (max-width:1240px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:344px; max-height:192px;}
+
+ }
+ 
+ 
+ @media screen and (max-width:1234px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:342px; max-height:191px;}
+
+ }
+ 
+  @media screen and (max-width:1224px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:500px; max-height:279px;}
+  
+   .ocarousel_window_slides li span {width:86.8%; left:25px;}
+  .ocarousel_window_slides li h2{ left:30px;}
+
+ }
+ 
+  @media screen and (max-width:1198px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:498px; max-height:278px;}
+ 
+
+ }
+ 
+ 
+  @media screen and (max-width:1193px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:496px; max-height:277px;} 
+
+ }
+ 
+ 
+ @media screen and (max-width:1187px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:494px;  max-height:277px;}
+
+ }
+ 
+ @media screen and (max-width:1184px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:492px;  max-height:275px;}
+
+ }
+ 
+  @media screen and (max-width:1180px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:490px;  max-height:274px;}
+
+ }
+ 
+ 
+ @media screen and (max-width:1176px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:488px; max-height:273px;}
+
+ }
+ 
+ @media screen and (max-width:1172px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:486px; max-height:271px;}
+
+ }
+ 
+ 
+ @media screen and (max-width:1165px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:484px; max-height:270px;}
+
+ }
+ 
+ @media screen and (max-width:1161px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:482px; max-height:269px;}
+
+ }
+ 
+ 
+  @media screen and (max-width:1159px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:480px; max-height:268px;}
+
+ }
+ 
+ 
+   @media screen and (max-width:1155px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:470px; max-height:263px;}
+  .ocarousel_window_slides li span {width:86.4%; left:25px;}
+   .left-arrow{ left:-34px;}
+ }
+ 
+   @media screen and (max-width:1151px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:476px; max-height:266px;}
+
+ }
+ 
+ 
+ @media screen and (max-width:1142px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:474px; max-height:265px;}
+   .ocarousel_window_slides li span {width:86%; left:25px;}
+ }
+ 
+ 
+ @media screen and (max-width:1140px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:472px; max-height:264px;}
+   .ocarousel_window_slides li span {width:86%; left:25px;}
+ }
+ 
+ @media screen and (max-width:1134px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:470px; max-height:263px;}
+ }
+ 
+ 
+ @media screen and (max-width:1130px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:468px; max-height:261px;}
+ }
+ 
+ 
+  @media screen and (max-width:1126px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:466px; max-height:260px;}
+ }
+ 
+   @media screen and (max-width:1122px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:464px; max-height:259px;}
+ }
+ 
+ 
+  @media screen and (max-width:1116px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:462px; max-height:258px;}
+ }
+ 
+  @media screen and (max-width:1112px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:460px; max-height:257px;}
+ }
+
+
+@media screen and (max-width:1107px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:458px; max-height:256px;}
+ }
+
+
+@media screen and (max-width:1103px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:456px; max-height:255px;}
+ }
+
+
+@media screen and (max-width:1099px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:454px; max-height:254px;}
+ }
+ 
+ @media screen and (max-width:1095px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:452px; max-height:252px;}
+ }
+
+
+ @media screen and (max-width:1091px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:450px; max-height:251px;}
+ }
+
+
+ @media screen and (max-width:1087px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:448px; max-height:250px;}
+ }
+
+
+ @media screen and (max-width:1083px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:446px; max-height:249px;}
+ }
+
+
+ @media screen and (max-width:1079px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:444px; max-height:248px;}
+ }
+
+
+ @media screen and (max-width:1075px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:442px; max-height:247px;}
+
+     .right-arrow{ right:-40px;}
+
+     .left-arrow{ left:-25px;}
+ }
+ 
+  @media screen and (max-width:1071px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:440px; max-height:246px;}
+ }
+
+
+  @media screen and (max-width:1067px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:438px; max-height:245px;}
+ }
+
+
+  @media screen and (max-width:1063px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:436px; max-height:244px;}
+ }
+ 
+  @media screen and (max-width:1059px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:434px; max-height:242px;}
+ }
+
+  @media screen and (max-width:1055px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:432px; max-height:241px;}
+   .ocarousel_window_slides li span {width:85%;}
+ }
+ 
+   @media screen and (max-width:1051px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:430px; max-height:240px;}
+ }
+
+
+   @media screen and (max-width:1047px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:428px; max-height:239px;}
+ }
+ 
+  @media screen and (max-width:1043px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:426px; max-height:238px;}
+ }
+
+
+ @media screen and (max-width:1039px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:424px; max-height:237px;}
+ }
+ 
+  @media screen and (max-width:1035px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:422px; max-height:235px;}
+ }
+ 
+  @media screen and (max-width:1031px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:420px; max-height:234px;}
+ }
+
+
+  @media screen and (max-width:1027px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:424px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+	     
+ }
+
+  @media screen and (max-width:1023px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:424px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+  @media screen and (max-width:1009px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:422px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+
+   
+ }
+ 
+ @media screen and (max-width:1005px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:420px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+ @media screen and (max-width:1001px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:420px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+
+@media screen and (max-width:997px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:416px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+
+
+@media screen and (max-width:993px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:416px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+ @media screen and (max-width:989px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:416px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+  @media screen and (max-width:985px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:412px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+  @media screen and (max-width:981px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:408px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+
+
+ @media screen and (max-width:977px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:410px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+ @media screen and (max-width:973px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:408px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+ 
+ @media screen and (max-width:969px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:406px; max-height:231px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+
+
+ @media screen and (max-width:965px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:402px; max-height:226px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:89%; left:16px;}
+   
+ }
+
+
+ @media screen and (max-width:957px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:400px; max-height:226px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.8%; left:16px;}
+   
+ }
+ 
+  @media screen and (max-width:953px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:393px; max-height:226px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.8%; left:16px;}
+   
+ }
+ 
+  @media screen and (max-width:949px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:393px; max-height:226px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.6%; left:16px;}
+    
+ }
+ 
+@media screen and (max-width:928px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:390px; max-height:226px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.6%; left:16px;}
+    
+ }
+
+@media screen and (max-width:924px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:385px; max-height:226px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.6%; left:16px;}
+    
+ }
+
+@media screen and (max-width:920px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:380px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.5%; left:16px;}
+    
+ }
+
+@media screen and (max-width:916px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:380px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.5%; left:16px;}
+    
+ }
+
+
+@media screen and (max-width:912px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:375px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.5%; left:16px;}
+    
+ }
+
+
+@media screen and (max-width:908px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:375px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.4%; left:16px;}
+    
+ }
+ 
+ @media screen and (max-width:904px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:372px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.4%; left:16px;}
+    
+ }
+ 
+  @media screen and (max-width:900px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:370px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+
+
+  @media screen and (max-width:896px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:370px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+ 
+   @media screen and (max-width:892px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:370px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+ 
+  @media screen and (max-width:888px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:370px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+
+
+
+  @media screen and (max-width:884px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:370px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+ }
+ 
+   @media screen and (max-width:876px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:365px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+ 
+    @media screen and (max-width:872px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:362px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+
+
+  @media screen and (max-width:868px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:360px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88.2%; left:16px;}
+    
+ }
+
+
+  @media screen and (max-width:864px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:356px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+ }
+
+
+
+  @media screen and (max-width:860px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:356px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+ }
+
+
+
+  @media screen and (max-width:856px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:354px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+    
+ }
+ 
+ 
+  @media screen and (max-width:852px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:354px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+ }
+
+
+  @media screen and (max-width:848px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:350px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+ }
+ 
+  @media screen and (max-width:844px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:350px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+ }
+ 
+   @media screen and (max-width:840px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:348px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+    
+ }
+ 
+   @media screen and (max-width:836px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:348px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:88%; left:16px;}
+    
+ }
+ 
+ 
+   @media screen and (max-width:832px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:346px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:87.9%; left:16px;}
+    
+ }
+ 
+   @media screen and (max-width:828px) {
+.ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:346px; max-height:220px; }
+       .right-arrow{ right:-40px;}
+	    .left-arrow{ left:-40px;}
+		.ocarousel_window_slides li span{ width:87.9%; left:16px;}
+    
+ }
+
+
+  @media screen and (max-width:824px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:326px; max-height:183px;}
+ .ocarousel_window_slides li span{ width:82.7%; left:25px;}
+    
+ }
+ 
+  @media screen and (max-width:820px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:324px; max-height:182px;}
+    .ocarousel_window_slides li span {width:82.1%;} 
+ }
+ 
+   @media screen and (max-width:816px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:322px; max-height:181px;}
+    
+ }
+ 
+  @media screen and (max-width:812px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:320px; max-height:180px;}
+    
+ }
+ 
+  @media screen and (max-width:808px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:318px; max-height:179px;}
+    
+ }
+ 
+ @media screen and (max-width:804px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:316px; max-height:178px;}
+    
+ }
+ 
+ @media screen and (max-width:800px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 16px; width:310px; max-height:173px;}  
+         .right-arrow{ right:-35px;}
+	    .left-arrow{ left:-35px;}  
+		  .ocarousel_window_slides li span {width:84%; left:21px;} 
+ }
+
+
+@media screen and (max-width:796px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:324px; max-height:181px;}  
+    .ocarousel_window_slides li span {width:87%; left:16px;}
+    .left-arrow{ top:-60px; left:80%;}
+    .right-arrow{ top:-60px; right:20px;}
+ }
+ 
+ @media screen and (max-width:794px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:322px; max-height:180px;}
+    .ocarousel_window_slides li span {width:87%; left:16px;}
+    
+ }
+ 
+ @media screen and (max-width:767px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:320px; max-height:179px;}
+  
+    
+ }
+ 
+ 
+ @media screen and (max-width:763px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:318px; max-height:178px;}
+ 
+ }
+ 
+ @media screen and (max-width:760px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:316px; max-height:177px;}
+  
+    
+ }
+ 
+ 
+  @media screen and (max-width:757px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:314px; max-height:176px;}    
+ }
+ 
+ @media screen and (max-width:754px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:312px; max-height:175px;}    
+ }
+ 
+  @media screen and (max-width:750px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:310px; max-height:174px;}    
+ }
+
+
+ @media screen and (max-width:740px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:308px; max-height:173px;}    
+ }
+ 
+ 
+ @media screen and (max-width:737px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:306px; max-height:172px;}    
+ }
+ 
+  @media screen and (max-width:734px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:304px; max-height:171px;}    
+ }
+
+
+ @media screen and (max-width:731px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:302px; max-height:170px;}    
+ }
+
+
+
+ @media screen and (max-width:724px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:300px; max-height:169px;}  
+   .ocarousel_window_slides li span {width:86.1%; left:16px;}  
+ }
+
+
+ @media screen and (max-width:720px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:298px; max-height:168px;}  
+
+ 
+ }
+
+
+@media screen and (max-width:716px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:296px; max-height:167px;}  
+
+ 
+ }
+
+
+@media screen and (max-width:712px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:294px; max-height:166px;}  
+   .ocarousel_window_slides li span {width:87%; left:15px;}  
+
+ 
+ }
+ 
+ @media screen and (max-width:708px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:292px; max-height:165px;}  
+
+ .ocarousel_window_slides li span {width:86%; left:15px;}  
+ }
+
+
+ @media screen and (max-width:704px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:290px; max-height:164px;}  
+
+ 
+ }
+ 
+ 
+  @media screen and (max-width:700px) {
+  
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:620px; max-height:346px;} 
+  .ocarousel_window_slides li span {
+    left: 1%;
+    width: 94%;
+}
+ 
+ }
+ 
+  @media screen and (max-width:699px) {
+  
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:619px;  max-height:345px;} 
+ }
+ 
+  @media screen and (max-width:697px) {
+  
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:618px;  max-height:345px; } 
+
+ }
+ 
+ @media screen and (max-width:696px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:617px; max-height:344px;} 
+ }
+ 
+  @media screen and (max-width:695px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:616px; max-height:344px;} 
+ }
+ 
+  @media screen and (max-width:694px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:615px; max-height:343px;} 
+ }
+ 
+ @media screen and (max-width:693px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:614px; max-height:343px;} 
+ }
+ 
+ @media screen and (max-width:692px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:613px; max-height:343px;} 
+ }
+ 
+  @media screen and (max-width:691px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:612px; max-height:342px;} 
+ }
+ 
+  @media screen and (max-width:690px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:611px; max-height:342px;} 
+    .ocarousel_window_slides li span {
+    left: 1%;
+    width: 94.2%;
+}
+ }
+ 
+   @media screen and (max-width:689px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:610px; max-height:342px;} 
+ }
+ 
+  @media screen and (max-width:688px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:609px; max-height:341px;} 
+  
+ }
+ 
+  @media screen and (max-width:686px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:608px; max-height:341px;} 
+  
+ }
+ 
+   @media screen and (max-width:685px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:607px; max-height:341px;} 
+  
+ }
+ 
+  @media screen and (max-width:684px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:606px; max-height:341px;} 
+  
+ }
+ 
+  @media screen and (max-width:683px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:605px; max-height:340px;} 
+  
+ }
+ 
+  @media screen and (max-width:682px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:604px; max-height:340px;} 
+  
+ }
+ 
+  @media screen and (max-width:681px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:603px; max-height:340px;} 
+  
+ }
+ 
+  @media screen and (max-width:680px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:602px; max-height:339px;} 
+  
+ }
+ 
+   @media screen and (max-width:679px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:601px; max-height:339px;} 
+  
+ }
+ @media screen and (max-width:678px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:600px; max-height:339px;} 
+  
+ }
+
+ @media screen and (max-width:677px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:599px; max-height:338px;} 
+  
+ }
+ 
+  @media screen and (max-width:676px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:598px; max-height:338px;} 
+  
+ }
+ 
+  @media screen and (max-width:675px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:597px; max-height:338px;} 
+  
+ }
+ 
+  @media screen and (max-width:674px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:596px; max-height:337px;} 
+  
+ }
+ 
+  @media screen and (max-width:673px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:595px;  max-height:337px;} 
+  
+ }
+ 
+  @media screen and (max-width:672px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:594px;  max-height:337px;} 
+  
+ }
+ 
+   @media screen and (max-width:671px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:593px;  max-height:336px;} 
+  
+ }
+ 
+    @media screen and (max-width:670px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:592px;  max-height:336px;} 
+  
+ }
+ 
+   @media screen and (max-width:668px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:591px;  max-height:336px;} 
+    .ocarousel_window_slides li span {
+    left: 1%;
+    width: 94.1%;
+}
+ }
+ 
+  @media screen and (max-width:667px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:590px;  max-height:335px;} 
+  }
+  
+  @media screen and (max-width:666px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:589px;  max-height:335px;} 
+  }
+  
+   @media screen and (max-width:665px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:588px;  max-height:335px;} 
+  }
+  
+   @media screen and (max-width:664px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:587px;  max-height:334px;} 
+  }
+  
+   @media screen and (max-width:663px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:586px; max-height:334px;} 
+  }
+  
+   @media screen and (max-width:662px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:585px; max-height:334px;} 
+  }
+  
+   @media screen and (max-width:661px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:584px; max-height:332px;} 
+  }
+  
+    @media screen and (max-width:660px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:583px; max-height:332px;} 
+  }
+  
+      @media screen and (max-width:659px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:582px; max-height:332px;} 
+  }
+  
+ @media screen and (max-width:658px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:581px; max-height:331px;} 
+  }
+  
+   @media screen and (max-width:657px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:580px; max-height:330px;} 
+  }
+  
+    @media screen and (max-width:656px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:579px; max-height:330px;} 
+  }
+  
+      @media screen and (max-width:655px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:578px; max-height:330px;} 
+  }
+  
+        @media screen and (max-width:654px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:577px; max-height:329px;} 
+  }
+ 
+ 
+ @media screen and (max-width:653px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:576px; max-height:329px;} 
+  }
+  
+   @media screen and (max-width:652px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:575px; max-height:329px;} 
+  }
+  
+   @media screen and (max-width:651px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:574px; max-height:328px;} 
+  }
+  
+  
+     @media screen and (max-width:650px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:573px; max-height:328px;} 
+  }
+  
+    @media screen and (max-width:648px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:572px; max-height:328px;} 
+  }
+ 
+     @media screen and (max-width:645px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:571px; max-height:327px;} 
+  }
+  
+    @media screen and (max-width:644px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:570px; max-height:327px;} 
+  }
+  
+     @media screen and (max-width:643px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:569px; max-height:327px;} 
+  }
+ 
+ 
+     @media screen and (max-width:642px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:568px; max-height:326px;} 
+  }
+  
+    @media screen and (max-width:641px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:567px; max-height:326px;} 
+  }
+  
+   @media screen and (max-width:640px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:566px; max-height:326px;} 
+  }
+  
+   @media screen and (max-width:639px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:565px; max-height:325px;} 
+  }
+  
+   @media screen and (max-width:638px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:564px; max-height:324px;} 
+  }
+  
+    @media screen and (max-width:637px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:563px; max-height:324px;} 
+  }
+  
+   @media screen and (max-width:636px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:562px; max-height:324px;} 
+  }
+  
+   @media screen and (max-width:635px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:561px; max-height:323px;} 
+  }
+  
+   @media screen and (max-width:634px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:560px; max-height:323px;} 
+  }
+    @media screen and (max-width:633px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:559px; max-height:323px;} 
+  }
+  
+   @media screen and (max-width:632px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:558px; max-height:322px;} 
+  }
+  
+   @media screen and (max-width:631px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:557px; max-height:322px;} 
+  }
+  
+   @media screen and (max-width:630px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:556px; max-height:322px;} 
+  }
+  
+     @media screen and (max-width:629px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:555px; max-height:321px;} 
+  }
+  
+  @media screen and (max-width:628px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:554px; max-height:320px;} 
+  }
+  
+    @media screen and (max-width:627px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:553px; max-height:320px;} 
+  }
+  
+     @media screen and (max-width:626px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:552px; max-height:320px;} 
+  }
+  
+   @media screen and (max-width:625px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:551px; max-height:319px;} 
+  }
+  
+    @media screen and (max-width:624px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:550px; max-height:319px;} 
+  }
+  
+  @media screen and (max-width:623px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:549px; max-height:319px;} 
+  }
+  
+  @media screen and (max-width:622px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:548px; max-height:318px;} 
+  }
+  
+   @media screen and (max-width:621px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:547px; max-height:318px;} 
+  }
+  
+   @media screen and (max-width:620px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:546px; max-height:318px;} 
+  }
+  
+  @media screen and (max-width:617px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:545px; max-height:317px;} 
+  }
+  
+  @media screen and (max-width:616px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:544px; max-height:317px;} 
+  }
+  
+   @media screen and (max-width:615px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:543px; max-height:317px;} 
+  }
+  
+    @media screen and (max-width:614px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:542px; max-height:316px;} 
+  }
+  
+  
+    @media screen and (max-width:613px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:541px; max-height:316px;} 
+  }
+  
+     @media screen and (max-width:612px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:540px; max-height:316px;} 
+  }
+  
+    @media screen and (max-width:611px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:539px; max-height:315px;} 
+  }
+  
+    @media screen and (max-width:610px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:538px; max-height:315px;} 
+  }
+  
+   @media screen and (max-width:609px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:537px; max-height:315px;} 
+  }
+  
+  
+   @media screen and (max-width:608px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:536px; max-height:314px;} 
+  }
+  
+  @media screen and (max-width:607px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:535px; max-height:314px;} 
+  }
+  
+   @media screen and (max-width:606px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:534px; max-height:314px;} 
+  }
+  
+     @media screen and (max-width:605px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:533px; max-height:313px;} 
+  }
+  
+     @media screen and (max-width:604px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:532px; max-height:312px;} 
+  }
+  
+     @media screen and (max-width:603px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:531px; max-height:311px;} 
+  }
+
+
+   @media screen and (max-width:602px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:530px; max-height:311px;} 
+  }
+  
+  @media screen and (max-width:601px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:529px; max-height:311px;} 
+  }
+
+  @media screen and (max-width:600px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:530px; max-height:310px;} 
+  }
+  
+  @media screen and (max-width:599px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:527px; max-height:310px;} 
+  }
+
+  @media screen and (max-width:598px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:526px; max-height:310px;} 
+  }
+  
+  @media screen and (max-width:597px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:525px; max-height:309px;} 
+  }
+  
+   @media screen and (max-width:596px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:524px; max-height:309px;} 
+  }
+  
+  @media screen and (max-width:595px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:523px; max-height:309px;} 
+  }
+  
+   @media screen and (max-width:594px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:522px; max-height:308px;} 
+  }
+  
+    @media screen and (max-width:593px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:521px; max-height:308px;} 
+  }
+  
+   @media screen and (max-width:592px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:520px; max-height:308px;} 
+  }
+  
+    @media screen and (max-width:591px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:519px; max-height:307px;} 
+  }
+  
+    @media screen and (max-width:590px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:566px; max-height:316px;} 
+  }
+  
+    @media screen and (max-width:589px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:565px; max-height:316px;} 
+  }
+  
+    @media screen and (max-width:588px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:564px; max-height:316px;} 
+  }
+  
+    @media screen and (max-width:587px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:563px; max-height:315px;} 
+  }
+  
+    @media screen and (max-width:586px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:562px; max-height:315px;} 
+  }
+  
+   @media screen and (max-width:585px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:561px; max-height:315px;} 
+  }
+  
+    @media screen and (max-width:584px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:560px; max-height:314px;} 
+  }
+  
+     @media screen and (max-width:583px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:559px; max-height:314px;} 
+  }
+  
+     @media screen and (max-width:582px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:558px; max-height:314px;} 
+  }
+  
+     @media screen and (max-width:581px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:557px; max-height:313px;} 
+  }
+  
+     @media screen and (max-width:580px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:556px; max-height:313px;} 
+  }
+  
+  
+   @media screen and (max-width:579px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:555px; max-height:313px;} 
+  }
+  
+    @media screen and (max-width:578px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:554px; max-height:312px;} 
+  }
+  
+   @media screen and (max-width:577px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:553px; max-height:312px;} 
+  }
+  
+    @media screen and (max-width:576px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:552px; max-height:312px;} 
+  }
+  
+      @media screen and (max-width:575px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:551px; max-height:311px;} 
+  }
+  
+      @media screen and (max-width:574px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:550px; max-height:311px;} 
+  }
+  
+     @media screen and (max-width:573px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:549px; max-height:311px;} 
+  }
+  
+       @media screen and (max-width:572px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:548px; max-height:310px;} 
+  }
+  
+      @media screen and (max-width:571px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:547px; max-height:310px;} 
+  }
+  
+     @media screen and (max-width:570px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:546px; max-height:310px;} 
+  }
+  
+     @media screen and (max-width:569px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:546px; max-height:309px;} 
+  }
+  
+     @media screen and (max-width:568px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:545px; max-height:309px;} 
+  }
+  
+   @media screen and (max-width:567px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:544px; max-height:309px;} 
+  }
+  
+   @media screen and (max-width:566px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:543px; max-height:308px;} 
+  }
+  
+   @media screen and (max-width:565px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:542px; max-height:307px;} 
+  }
+  
+   @media screen and (max-width:564px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:541px; max-height:307px;} 
+  }
+  
+    @media screen and (max-width:563px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:540px; max-height:307px;} 
+  }
+  
+   @media screen and (max-width:562px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:539px; max-height:306px;} 
+  }
+  
+   @media screen and (max-width:561px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:538px; max-height:306px;} 
+  }
+
+ @media screen and (max-width:560px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:537px; max-height:306px;} 
+  }
+  
+  @media screen and (max-width:559px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:536px; max-height:305px;} 
+  }
+  
+  @media screen and (max-width:558px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:535px; max-height:305px;} 
+  }
+  
+   @media screen and (max-width:557px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:534px; max-height:305px;} 
+  }
+  
+  @media screen and (max-width:556px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:533px; max-height:304px;} 
+  }
+  
+   @media screen and (max-width:555px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:532px; max-height:304px;} 
+  }
+   @media screen and (max-width:554px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:531px; max-height:304px;} 
+  }
+  
+   @media screen and (max-width:553px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:530px; max-height:303px;} 
+  }
+  
+    @media screen and (max-width:552px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:529px; max-height:302px;} 
+  }
+  
+  @media screen and (max-width:551px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:528px; max-height:302px;} 
+  }
+  
+    @media screen and (max-width:550px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:527px; max-height:302px;} 
+  }
+  
+   @media screen and (max-width:549px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:526px; max-height:301px;} 
+  }
+  
+   @media screen and (max-width:548px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:525px; max-height:300px;} 
+  }
+  
+   @media screen and (max-width:547px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:524px; max-height:300px;} 
+  }
+  
+   @media screen and (max-width:546px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:523px; max-height:300px;} 
+  }
+  
+   @media screen and (max-width:545px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:522px; max-height:299px;} 
+  }
+  
+    @media screen and (max-width:544px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:521px; max-height:299px;} 
+  }
+
+
+ @media screen and (max-width:543px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:520px; max-height:299px;} 
+  }
+  
+   @media screen and (max-width:542px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:519px; max-height:298px;} 
+  }
+  
+   @media screen and (max-width:541px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:518px; max-height:298px;} 
+  }
+  
+   @media screen and (max-width:540px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:517px; max-height:298px;} 
+  }
+  
+  
+    @media screen and (max-width:539px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:516px; max-height:297px;} 
+  }
+  
+   @media screen and (max-width:538px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:515px; max-height:297px;} 
+  }
+  
+    @media screen and (max-width:537px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:514px; max-height:297px;} 
+  }
+  
+   @media screen and (max-width:536px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:513px; max-height:296px;} 
+  }
+  
+  @media screen and (max-width:535px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:512px; max-height:296px;} 
+  }
+  
+   @media screen and (max-width:534px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:511px; max-height:296px;} 
+  }
+  
+   @media screen and (max-width:533px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:510px; max-height:295px;} 
+  }
+  
+   @media screen and (max-width:532px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:509px; max-height:294px;} 
+  }
+  
+   @media screen and (max-width:531px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:508px; max-height:294px;} 
+  }
+  
+   @media screen and (max-width:530px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:507px; max-height:294px;} 
+  }
+  
+  
+   @media screen and (max-width:529px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:506px; max-height:293px;} 
+  }
+  
+   @media screen and (max-width:528px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:505px; max-height:293px;} 
+  }
+  
+  
+   @media screen and (max-width:527px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:504px; max-height:293px;} 
+  }
+  
+   @media screen and (max-width:526px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:503px; max-height:292px;} 
+  }
+  
+   @media screen and (max-width:525px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:502px; max-height:292px;} 
+  }
+  
+  @media screen and (max-width:524px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:501px; max-height:292px;} 
+  }
+  
+   @media screen and (max-width:523px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:500px; max-height:291px;} 
+  }
+  
+  
+   @media screen and (max-width:522px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:499px; max-height:291px;} 
+  }
+  
+  @media screen and (max-width:521px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:498px; max-height:291px;} 
+  }
+  
+  @media screen and (max-width:520px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:497px; max-height:290px;} 
+  }
+  @media screen and (max-width:519px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:496px; max-height:290px;} 
+  }
+    @media screen and (max-width:518px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:495px; max-height:290px;} 
+  }
+  
+     @media screen and (max-width:517px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:494px; max-height:289px;} 
+  }
+     @media screen and (max-width:516px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:493px; max-height:289px;} 
+  }
+  
+       @media screen and (max-width:515px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:492px; max-height:289px;} 
+  }
+  
+    @media screen and (max-width:514px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:491px; max-height:288px;} 
+  }
+    @media screen and (max-width:513px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:490px; max-height:288px;} 
+  }
+    @media screen and (max-width:512px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:489px; max-height:288px;} 
+  }
+  
+    @media screen and (max-width:511px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:488px; max-height:287px;} 
+  }
+    @media screen and (max-width:510px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:487px; max-height:287px;} 
+  }
+  
+   @media screen and (max-width:509px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:486px; max-height:287px;} 
+  }
+  
+  @media screen and (max-width:508px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:485px; max-height:286px;} 
+  }
+  
+  @media screen and (max-width:507px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:484px; max-height:286px;} 
+  }
+  
+  @media screen and (max-width:506px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:483px; max-height:286px;} 
+  }
+  
+  @media screen and (max-width:505px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:482px; max-height:285px;} 
+  }
+  
+  @media screen and (max-width:504px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:481px; max-height:285px;} 
+  }
+  
+  @media screen and (max-width:503px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:480px; max-height:285px;} 
+  }
+  
+  @media screen and (max-width:502px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:479px; max-height:284px;} 
+  }
+  
+  @media screen and (max-width:501px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:478px; max-height:284px;} 
+  }
+  
+   @media screen and (max-width:500px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:477px; max-height:284px;} 
+  }
+  
+   @media screen and (max-width:499px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:477px; max-height:283px;} 
+     .ocarousel_window_slides li span {
+    left: 1.6%;
+    width: 93.2%;
+}
+  }
+  
+  
+ @media screen and (max-width:498px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:476px; max-height:283px;} 
+  }
+  
+   @media screen and (max-width:497px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:475px; max-height:283px;} 
+  }
+  
+   @media screen and (max-width:496px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:474px; max-height:282px;} 
+  }
+  
+   @media screen and (max-width:495px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:473px; max-height:282px;} 
+  }
+  
+   @media screen and (max-width:494px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:472px; max-height:282px;} 
+  }
+  
+  
+   @media screen and (max-width:493px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:471px; max-height:281px;} 
+  }
+  
+   @media screen and (max-width:492px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:470px; max-height:281px;} 
+  }
+  
+   @media screen and (max-width:491px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:469px; max-height:283px;} 
+  }
+  
+   @media screen and (max-width:490px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:468px; max-height:281px;} 
+  }
+  
+  
+   @media screen and (max-width:488px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:467px; max-height:280px;} 
+  }
+  
+  @media screen and (max-width:487px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:466px; max-height:280px;} 
+  }
+  
+  
+  @media screen and (max-width:486px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:465px; max-height:280px;} 
+  }
+  
+  @media screen and (max-width:485px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:464px; max-height:279px;} 
+  }
+  
+  @media screen and (max-width:484px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:463px; max-height:279px;} 
+  }
+  
+  @media screen and (max-width:483px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:462px; max-height:279px;} 
+  }
+  
+  
+  @media screen and (max-width:482px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:461px; max-height:278px;} 
+  }
+  
+  @media screen and (max-width:481px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:460px; max-height:278px;} 
+  }
+  
+  @media screen and (max-width:480px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:459px; max-height:278px;} 
+ 
+ .ocarousel_window_slides li span {
+    left: 1.4%;
+    width: 93.1%;
+}
+  }
+  
+  @media screen and (max-width:479px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:458px; max-height:277px;} 
+  }
+  
+   @media screen and (max-width:478px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:457px; max-height:277px;} 
+  }
+  
+   @media screen and (max-width:477px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:456px; max-height:277px;} 
+  }
+  
+   @media screen and (max-width:476px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:455px; max-height:283px;} 
+  }
+  
+    @media screen and (max-width:475px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:454px; max-height:276px;} 
+  }
+  
+    @media screen and (max-width:474px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:453px; max-height:276px;} 
+  }
+  
+    @media screen and (max-width:473px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:452px; max-height:276px;} 
+  }
+  
+    @media screen and (max-width:472px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:451px; max-height:275px;} 
+  }
+  
+    @media screen and (max-width:471px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:450px; max-height:275px;} 
+  }
+  
+    @media screen and (max-width:470px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:449px; max-height:275px;} 
+  }
+  
+  
+   @media screen and (max-width:469px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:448px; max-height:274px;} 
+  }
+  
+  @media screen and (max-width:468px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:447px; max-height:274px;} 
+  }
+  
+   @media screen and (max-width:467px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:446px; max-height:274px;} 
+  }
+  
+   @media screen and (max-width:466px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:445px; max-height:273px;} 
+  }
+  
+  
+   @media screen and (max-width:465px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:444px; max-height:273px;} 
+  }
+  
+     @media screen and (max-width:464px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:443px; max-height:273px;} 
+  }
+  
+   @media screen and (max-width:463px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:442px; max-height:272px;} 
+  }
+  
+  
+     @media screen and (max-width:462px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:441px; max-height:272px;} 
+  }
+  
+  
+       @media screen and (max-width:460px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:440px; max-height:271px;} 
+  }
+  
+      @media screen and (max-width:459px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:439px; max-height:271px;} 
+  }
+  
+      @media screen and (max-width:458px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:438px; max-height:271px;} 
+  }
+  
+  
+      @media screen and (max-width:457px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:437px; max-height:270px;} 
+  }
+  
+      @media screen and (max-width:456px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:436px; max-height:270px;} 
+  }
+  
+       @media screen and (max-width:454px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:435px; max-height:270px;} 
+  }
+  
+      @media screen and (max-width:453px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:434px; max-height:269px;} 
+  }
+  
+  
+  @media screen and (max-width:452px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:433px; max-height:268px;} 
+  }
+  
+    
+  @media screen and (max-width:451px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:432px; max-height:268px;} 
+  }
+  
+    @media screen and (max-width:450px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:431px; max-height:267px;} 
+  }
+  
+  
+    @media screen and (max-width:448px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:430px; max-height:267px;} 
+  }
+  
+  
+      @media screen and (max-width:447px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:429px; max-height:266px;} 
+  }
+  
+      @media screen and (max-width:446px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:428px; max-height:266px;} 
+  }
+  
+     @media screen and (max-width:445px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:427px; max-height:266px;} 
+  }
+  
+   @media screen and (max-width:444px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:426px; max-height:265px;} 
+  }
+  
+    @media screen and (max-width:443px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:425px; max-height:265px;} 
+  }
+  
+     @media screen and (max-width:442px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:424px; max-height:265px;} 
+  }
+  
+  
+    @media screen and (max-width:441px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:423px; max-height:264px;} 
+  }
+  
+     @media screen and (max-width:440px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:422px; max-height:264px;} 
+  }
+  
+   @media screen and (max-width:439px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:421px; max-height:264px;} 
+  }
+  
+     @media screen and (max-width:438px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:421px; max-height:263px;} 
+  }
+  
+      @media screen and (max-width:437px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:420px; max-height:263px;} 
+  }
+  
+    @media screen and (max-width:436px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:419px; max-height:263px;} 
+  }
+  
+   @media screen and (max-width:435px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:418px; max-height:262px;} 
+  }
+  
+   @media screen and (max-width:434px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:417px; max-height:262px;} 
+  }
+  
+  
+   @media screen and (max-width:433px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:416px; max-height:261px;} 
+  }
+  
+  
+  @media screen and (max-width:432px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:415px; max-height:261px;} 
+  }
+  
+   @media screen and (max-width:431px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:414px; max-height:261px;} 
+  }
+  
+    @media screen and (max-width:430px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:413px; max-height:260px;} 
+  }
+  
+  
+
+   @media screen and (max-width:429px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:412px; max-height:260px;} 
+  }
+  
+  
+   @media screen and (max-width:428px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:411px; max-height:260px;} 
+  }
+  
+  
+   @media screen and (max-width:427px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:410px; max-height:259px;} 
+  }
+  
+     @media screen and (max-width:426px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:409px; max-height:259px;} 
+  }
+
+   @media screen and (max-width:425px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:408px; max-height:259px;} 
+  }
+  
+     @media screen and (max-width:424px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:407px; max-height:258px;} 
+  }
+
+   @media screen and (max-width:423px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:406px; max-height:258px;} 
+  }
+
+   @media screen and (max-width:422px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:405px; max-height:258px;} 
+  }
+  
+     @media screen and (max-width:421px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:404px; max-height:257px;} 
+  }
+
+   @media screen and (max-width:420px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:403px; max-height:257px;} 
+  }
+  
+     @media screen and (max-width:419px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:402px; max-height:257px;} 
+  }
+  
+     @media screen and (max-width:418px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:401px; max-height:256px;} 
+  }
+  
+     @media screen and (max-width:417px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:400px; max-height:256px;} 
+  }
+  
+  
+     @media screen and (max-width:416px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:399px; max-height:256px;} 
+  }
+
+
+
+     @media screen and (max-width:415px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:398px; max-height:255px;} 
+  }
+
+
+
+     @media screen and (max-width:414px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:397px; max-height:255px;} 
+  }
+  
+  
+     @media screen and (max-width:413px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:396px; max-height:255px;} 
+  }
+
+
+
+     @media screen and (max-width:412px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:395px; max-height:254px;} 
+  }
+
+  
+  
+     @media screen and (max-width:411px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:394px; max-height:254px;} 
+  }
+  
+  
+  
+     @media screen and (max-width:410px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:393px; max-height:254px;} 
+  }
+  
+  
+  
+     @media screen and (max-width:409px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:392px; max-height:253px;} 
+  }
+  
+  @media screen and (max-width:408px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:391px; max-height:253px;} 
+  }
+  
+  @media screen and (max-width:407px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:390px; max-height:253px;} 
+  }
+  
+  @media screen and (max-width:406px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:389px; max-height:252px;} 
+  }
+  
+  @media screen and (max-width:405px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:388px; max-height:252px;} 
+  }
+  
+  @media screen and (max-width:404px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:387px; max-height:252px;} 
+  }
+  
+  
+  @media screen and (max-width:403px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:386px; max-height:251px;} 
+  }
+  
+  @media screen and (max-width:402px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:385px; max-height:251px;} 
+  }
+  
+  @media screen and (max-width:401px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:384px; max-height:251px;} 
+  }
+  
+  @media screen and (max-width:400px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:381px; max-height:250px;} 
+  }
+  
+  
+ 
+  
+  @media screen and (max-width:399px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:381px; max-height:250px;} 
+  }
+  
+   @media screen and (max-width:398px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:380px; max-height:250px;} 
+  }
+  
+   @media screen and (max-width:397px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:379px; max-height:249px;} 
+  }
+  
+   @media screen and (max-width:396px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:378px; max-height:249px;} 
+  }
+  
+   @media screen and (max-width:395px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:377px; max-height:249px;} 
+  }
+  
+  
+   @media screen and (max-width:394px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:376px; max-height:248px;} 
+  }
+  
+   @media screen and (max-width:393px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:375px; max-height:248px;} 
+  }
+  
+  
+   @media screen and (max-width:392px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:374px; max-height:248px;} 
+  }
+  
+   @media screen and (max-width:391px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:373px; max-height:247px;} 
+  }
+  
+   @media screen and (max-width:390px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:372px; max-height:247px;} 
+  }
+  
+  
+   @media screen and (max-width:389px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:371px; max-height:247px;} 
+  }
+  
+   @media screen and (max-width:388px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:370px; max-height:246px;} 
+  }
+  
+  
+   @media screen and (max-width:387px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:369px; max-height:246px;} 
+  }
+  
+   @media screen and (max-width:386px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:368px; max-height:246px;} 
+  }
+  
+   @media screen and (max-width:385px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:367px; max-height:245px;} 
+  }
+  
+   @media screen and (max-width:384px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:366px; max-height:245px;} 
+  }
+  
+   @media screen and (max-width:383px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:365px; max-height:245px;} 
+  }
+  
+   @media screen and (max-width:382px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:364px; max-height:244px;} 
+  }
+  
+   @media screen and (max-width:381px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:363px; max-height:244px;} 
+  }
+  
+   @media screen and (max-width:380px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:362px; max-height:244px;} 
+  }
+  
+   @media screen and (max-width:379px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:361px; max-height:243px;} 
+  }
+  
+  
+   @media screen and (max-width:378px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:360px; max-height:243px;} 
+  }
+  
+    @media screen and (max-width:377px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:359px; max-height:243px;} 
+  }
+  
+    @media screen and (max-width:376px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:358px; max-height:242px;} 
+  }
+  
+    @media screen and (max-width:375px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:357px; max-height:242px;} 
+  }
+  
+    @media screen and (max-width:374px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:356px; max-height:242px;} 
+  }
+  
+    @media screen and (max-width:373px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:355px; max-height:241px;} 
+  }
+  
+    @media screen and (max-width:372px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:354px; max-height:241px;} 
+  }
+  
+    @media screen and (max-width:371px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:353px; max-height:241px;} 
+  }
+  
+    @media screen and (max-width:370px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:352px; max-height:240px;} 
+  }
+  
+    @media screen and (max-width:369px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:351px; max-height:240px;} 
+  }
+  
+    @media screen and (max-width:368px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:350px; max-height:240px;} 
+  }
+  
+     @media screen and (max-width:367px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:349px; max-height:239px;} 
+  }
+  
+       @media screen and (max-width:366px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:348px; max-height:239px;} 
+  }
+  
+       @media screen and (max-width:365px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:347px; max-height:239px;} 
+  }
+  
+       @media screen and (max-width:364px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:346px; max-height:238px;} 
+  }
+  
+       @media screen and (max-width:363px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:345px; max-height:238px;} 
+  }
+  
+  
+       @media screen and (max-width:362px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:344px; max-height:238px;} 
+  }
+  
+       @media screen and (max-width:361px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:343px; max-height:237px;} 
+  }
+  
+       @media screen and (max-width:360px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:342px; max-height:237px;} 
+  }
+  
+       @media screen and (max-width:359px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:341px; max-height:237px;} 
+  }
+  
+       @media screen and (max-width:358px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:340px; max-height:236px;} 
+  }
+  
+       @media screen and (max-width:357px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:339px; max-height:236px;} 
+  }
+  
+       @media screen and (max-width:356px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:338px; max-height:236px;} 
+  }
+  
+       @media screen and (max-width:355px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:337px; max-height:235px;} 
+  }
+  
+       @media screen and (max-width:354px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:336px; max-height:235px;} 
+  }
+  
+       @media screen and (max-width:353px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:335px; max-height:235px;} 
+  }
+  
+       @media screen and (max-width:352px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:334px; max-height:234px;} 
+  }
+  
+       @media screen and (max-width:351px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:333px; max-height:234px;} 
+  }
+  
+       @media screen and (max-width:350px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:332px; max-height:234px;} 
+ .ocarousel_window_slides li span {
+    left: 1.2%;
+    width: 93.2%;
+}
+  }
+  
+       @media screen and (max-width:349px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:331px; max-height:233px;} 
+  }
+  
+     @media screen and (max-width:348px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:330px; max-height:233px;} 
+  }
+  
+     @media screen and (max-width:347px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:329px; max-height:233px;} 
+  }
+  
+     @media screen and (max-width:346px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:328px; max-height:232px;} 
+  }
+  
+     @media screen and (max-width:345px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:327px; max-height:232px;} 
+  }
+  
+     @media screen and (max-width:344px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:326px; max-height:232px;} 
+  }
+  
+     @media screen and (max-width:343px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:325px; max-height:231px;} 
+  }
+  
+     @media screen and (max-width:342px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:324px; max-height:231px;} 
+  }
+  
+     @media screen and (max-width:341px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:323px; max-height:231px;} 
+  }
+  
+     @media screen and (max-width:340px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:322px; max-height:230px;} 
+  }
+  
+      @media screen and (max-width:339px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:321px; max-height:230px;} 
+  }
+  
+     @media screen and (max-width:338px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:320px; max-height:230px;} 
+  }
+  
+     @media screen and (max-width:337px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:319px; max-height:229px;} 
+  }
+  
+     @media screen and (max-width:336px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:318px; max-height:229px;} 
+  }
+  
+     @media screen and (max-width:335px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:317px; max-height:229px;} 
+  }
+  
+     @media screen and (max-width:334px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:316px; max-height:228px;} 
+  }
+  
+     @media screen and (max-width:333px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:315px; max-height:228px;} 
+  }
+  
+     @media screen and (max-width:332px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:314px; max-height:228px;} 
+  }
+  
+     @media screen and (max-width:331px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:313px; max-height:227px;} 
+  }
+  
+     @media screen and (max-width:330px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:312px; max-height:227px;} 
+  }
+  
+     @media screen and (max-width:329px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:311px; max-height:227px;} 
+  }
+  
+    @media screen and (max-width:328px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:310px; max-height:226px;} 
+  }
+  
+    @media screen and (max-width:327px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:309px; max-height:226px;} 
+  }
+  
+    @media screen and (max-width:326px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:308px; max-height:226px;} 
+  }
+  
+    @media screen and (max-width:325px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:307px; max-height:225px;} 
+  }
+  
+    @media screen and (max-width:324px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:306px; max-height:225px;} 
+  }
+  
+    @media screen and (max-width:323px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:305px; max-height:225px;} 
+  }
+  
+    @media screen and (max-width:322px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:304px; max-height:224px;} 
+  }
+  
+    @media screen and (max-width:321px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:303px; max-height:224px;} 
+  }
+  
+    @media screen and (max-width:320px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:302px; max-height:224px;} 
+ 
+ .ocarousel_window_slides li span {
+    left: 1.6%;
+    width: 93.2%;
+}
+  }
+  
+    @media screen and (max-width:319px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:300px; max-height:223px;} 
+  }
+  
+   @media screen and (max-width:318px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:299px; max-height:223px;} 
+  }
+  
+   @media screen and (max-width:317px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:298px; max-height:223px;} 
+  }
+  
+   @media screen and (max-width:316px) {
+ .ocarousel_window img{ border:solid 5px #fff; margin:0 0px; width:297px; max-height:222px;} 
+  }
+  
+/*
+  @media screen and (max-width:663px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:568px; max-height:317px;}  
+    .ocarousel_window_slides li span {width:87.5%; left:26px;}
+      .left-arrow{ top:-60px; left:80%;}
+      .right-arrow{ top:-60px; right:20px;}
+ }
+
+
+@media screen and (max-width:660px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:566px; max-height:316px;}  
+  
+ }
+
+
+@media screen and (max-width:657px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:564px; max-height:315px;}  
+  
+ }
+
+
+
+@media screen and (max-width:654px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:560px; max-height:312px;}  
+  
+ }
+
+
+@media screen and (max-width:651px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:558px; max-height:311px;}  
+  
+ }
+
+
+@media screen and (max-width:650px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:556px; max-height:310px;}  
+  
+ }
+ 
+ @media screen and (max-width:648px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:554px; max-height:309px;}  
+  
+ }
+
+
+ @media screen and (max-width:646px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:552px; max-height:308px;}  
+  
+ }
+
+
+ @media screen and (max-width:644px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:550px; max-height:307px;}  
+  
+ }
+
+
+ @media screen and (max-width:642px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:548px; max-height:306px;}  
+  
+ }
+ 
+  @media screen and (max-width:640px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:546px; max-height:305px;}  
+   .ocarousel_window_slides li span {width:87%; left:26px;}  
+ }
+
+ 
+ 
+   @media screen and (max-width:638px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:544px; max-height:304px;}  
+  
+ }
+
+ 
+  
+   @media screen and (max-width:636px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:542px; max-height:303px;}  
+  
+ }
+
+
+   @media screen and (max-width:634px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:540px; max-height:302px;}  
+  
+ }
+ 
+ 
+    @media screen and (max-width:632px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:538px; max-height:301px;}  
+  
+ }
+ 
+ 
+     @media screen and (max-width:630px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:536px; max-height:300px;}  
+  
+ }
+ 
+ 
+     @media screen and (max-width:628px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:534px; max-height:299px;}  
+  
+ }
+ 
+ 
+  @media screen and (max-width:626px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:532px; max-height:298px;}  
+  
+ }
+ 
+  @media screen and (max-width:624px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:530px; max-height:297px;}  
+  
+ }
+ 
+   @media screen and (max-width:622px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:528px; max-height:296px;}  
+  
+ }
+ 
+    @media screen and (max-width:620px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:526px; max-height:295px;}  
+  
+ }
+ 
+ 
+  @media screen and (max-width:620px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:526px; max-height:295px;}  
+  
+ }
+ 
+   @media screen and (max-width:615px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:522px; max-height:291px;}  
+  
+ }
+ 
+   @media screen and (max-width:610px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:520px; max-height:290px;}  
+  
+ }
+ 
+   @media screen and (max-width:607px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:518px; max-height:288px;}  
+  
+ }
+ 
+   @media screen and (max-width:605px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:516px; max-height:287px;}  
+  
+ }
+ 
+    @media screen and (max-width:603px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:514px; max-height:286px;}  
+  
+ }
+ 
+ 
+     @media screen and (max-width:601px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:512px; max-height:285px;}  
+  
+ }
+ 
+    @media screen and (max-width:659px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:510px; max-height:284px;}  
+  
+ }
+ 
+  @media screen and (max-width:657px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:508px;  max-height:283px;}  
+  
+ }
+ 
+ @media screen and (max-width:655px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:506px;  max-height:282px;}  
+  
+ }
+ 
+ @media screen and (max-width:653px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:504px;  max-height:281px;}  
+  
+ }
+ 
+  @media screen and (max-width:651px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:502px;  max-height:280px;}  
+   .ocarousel_window_slides li span {width:86%; left:26px;}  
+  
+ }
+ 
+   @media screen and (max-width:560px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:480px; max-height:268px;}  
+  
+ }
+ 
+ 
+  @media screen and (max-width:530px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:450px; max-height:251px;}  
+  
+   .right-arrow{ top:-60px; right:10px;}
+
+ }
+ 
+ 
+ 
+  @media screen and (max-width:500px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:420px; max-height:234px;}  
+   .ocarousel_window_slides li span {width:85%; left:26px;}  
+ }
+ 
+ 
+  @media screen and (max-width:470px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:390px; max-height:218px;}  
+.ocarousel_window_slides li span {width:84%; left:26px;}
+
+  .left-arrow{ top:-60px; left:320px;} 
+ }
+ 
+   @media screen and (max-width:440px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:364px; max-height:203px;}  
+.ocarousel_window_slides li span {width:83%; left:26px;} 
+ }
+
+@media screen and (max-width:420px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 20px; width:60%; max-height:inherit;}  
+  .ocarousel_window_slides li span {width:56%; left:26px;} 
+.left-arrow{ display: none;}
+.right-arrow{ display: none;}
+}
+
+@media screen and (max-width:370px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:65%;}  
+  .ocarousel_window_slides li span {left: 15px;
+    width: 61%;} 
+.left-arrow{ display: none;}
+.right-arrow{ display: none;}
+}
+
+
+@media screen and (max-width:360px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:62%;}  
+  .ocarousel_window_slides li span {left: 15px;
+    width:58%;} 
+.left-arrow{ display: none;}
+.right-arrow{ display: none;}
+}
+
+@media screen and (max-width:350px) {
+  .ocarousel_window img{ border:solid 5px #fff; margin:0 10px; width:60%;}  
+  .ocarousel_window_slides li span {left: 15px;
+    width:56%;} 
+.left-arrow{ display: none;}
+.right-arrow{ display: none;}
+}
+
+
+@media screen and (max-width:340px) {
+  .ocarousel_window img{ border:solid 5px #fff;width:58%;}  
+  .ocarousel_window_slides li span {left: 15px;
+    width:54%;} 
+.left-arrow{ display: none;}
+.right-arrow{ display: none;}
+.ocarousel_window_slides li span .text-div{ width:178px;}
+} 
+
+
+@media screen and (max-width:325px) {
+  .ocarousel_window img{ border:solid 5px #fff; width:56%;}  
+  .ocarousel_window_slides li span {left: 15px;
+    width:52%;} 
+.left-arrow{ display: none;}
+.right-arrow{ display: none;}
+}*/

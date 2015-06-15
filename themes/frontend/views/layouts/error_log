@@ -1,0 +1,4 @@
+[17-Apr-2014 22:02:07 Europe/Moscow] PHP Fatal error:  Using $this when not in object context in /home/torqkdtv/public_html/themes/frontend/views/layouts/main.php on line 6
+[28-Apr-2014 05:07:36 Europe/Moscow] PHP Fatal error:  Using $this when not in object context in /home/torqkdtv/public_html/themes/frontend/views/layouts/main.php on line 6
+[08-May-2014 02:43:06 Europe/Moscow] PHP Fatal error:  Using $this when not in object context in /home/torqkdtv/public_html/themes/frontend/views/layouts/main.php on line 11
+[06-Jun-2014 05:28:01 Europe/Moscow] PHP Fatal error:  Using $this when not in object context in /home/torqkdtv/public_html/themes/frontend/views/layouts/main.php on line 13

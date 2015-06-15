@@ -1,0 +1,77 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.page
+{
+	max-width:95%;
+	width:960px;
+	margin:0 auto;
+}
+.demowrap
+{
+	
+	display:block;
+}
+.demowrap img
+{
+	width:100%;
+}
+.left
+{
+	width:100%;
+	float:none;
+	margin:0 auto;
+}
+.right
+{
+	width:55%;
+	float:right;
+	color:#333;
+	text-shadow:1px 1px 0 #fff;
+}
+
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+.info
+{
+	text-indent:1em;
+}
+.box
+{
+	margin-bottom:40px;
+}
+
+#option ul
+{
+	list-style:square;
+	line-height:2em;
+}
+#option b
+{
+	color:#333;
+	padding:0 5px;
+	text-shadow:1px 1px 0 #fff;
+	
+}
+#option i
+{
+	color:#F30;
+	margin-left:5px;
+}

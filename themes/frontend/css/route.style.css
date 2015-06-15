@@ -1,0 +1,123 @@
+@font-face {
+
+    font-family: 'capture_itregular';
+
+    src: url('../font/capture_it-webfont.eot');
+
+    src: url('../font/capture_it-webfont.eot?#iefix') format('embedded-opentype'),
+
+    url('../font/capture_it-webfont.woff') format('woff'),
+
+    url('../font/capture_it-webfont.ttf') format('truetype'),
+
+    url('../font/capture_it-webfont.svg#capture_itregular') format('svg');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+
+
+}
+
+
+
+@font-face {
+
+    font-family: 'veneerregular';
+
+    src: url('../font/veneer-webfont.eot');
+
+    src: url('../font/veneer-webfont.eot?#iefix') format('embedded-opentype'),
+
+    url('../font/veneer-webfont.woff') format('woff'),
+
+    url('../font/veneer-webfont.ttf') format('truetype'),
+
+    url('../font/veneer-webfont.svg#veneerregular') format('svg');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+
+
+}
+
+
+
+
+
+@font-face {
+
+    font-family: 'reservation_wideregular';
+
+    src: url('../font/reservationwide-regular-webfont.eot');
+
+    src: url('../font/reservationwide-regular-webfont.eot?#iefix') format('embedded-opentype'),
+
+    url('../font/reservationwide-regular-webfont.woff') format('woff'),
+
+    url('../font/reservationwide-regular-webfont.ttf') format('truetype'),
+
+    url('../font/reservationwide-regular-webfont.svg#reservation_wideregular') format('svg');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+
+
+}
+
+
+
+@font-face {
+
+    font-family: 'reservation_wideblack';
+
+    src: url('../font/ufonts.com_reservationwide-black-webfont.eot');
+
+    src: url('../font/ufonts.com_reservationwide-black-webfont.eot?#iefix') format('embedded-opentype'),
+
+    url('../font/ufonts.com_reservationwide-black-webfont.woff') format('woff'),
+
+    url('../font/ufonts.com_reservationwide-black-webfont.ttf') format('truetype'),
+
+    url('../font/ufonts.com_reservationwide-black-webfont.svg#reservation_wideblack') format('svg');
+
+    font-weight: normal;
+
+    font-style: normal;
+
+
+
+}
+
+
+
+
+
+@font-face { font-family:reservation;  src: url('../font/ufonts.com_reservationwide-black.eot'); src: url('../font/ufonts.com_reservationwide-black.eot?#iefix') format('embedded-opentype'),
+
+url('../font/ufonts.com_reservationwide-black.woff') format('woff'), url('../font/ufonts.com_reservationwide-black.ttf') format('truetype'); font-weight: normal !important;
+
+    font-style: normal !important;
+
+    -webkit-font-smoothing: antialiased !important;
+
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004); }
+
+
+
+@font-face { font-family:'reservation';  src: url('../font/ufonts.com_reservationwide-black.eot'); src: url('../font/ufonts.com_reservationwide-black.eot?#iefix') format('embedded-opentype'),
+
+url('../font/ufonts.com_reservationwide-black.woff') format('woff'), url('../font/ufonts.com_reservationwide-black.ttf') format('truetype'); font-weight: normal !important;
+
+    font-style: normal !important;
+
+    -webkit-font-smoothing: antialiased !important;
+
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004); }
+
+ 
